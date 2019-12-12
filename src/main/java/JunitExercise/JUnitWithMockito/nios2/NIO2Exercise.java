@@ -45,7 +45,7 @@ public class NIO2Exercise {
 			e.printStackTrace();
 		}
 	}
-	public static void searchFile(String fileName,String dir) {
+	public static boolean searchFile(String fileName,String dir) {
 		try(Stream<Path> data=Files.walk(Paths.get(dir))){
 			data.filter(f -> f.toString().contains(fileName))
 			.forEach(System.out::println);
@@ -53,7 +53,9 @@ public class NIO2Exercise {
 		catch(IOException e) {
 			System.out.println("Files cannot be found");
 			e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 	public static void main(String[] args) {
 		System.out.println("**************Listing All Java Files*************");

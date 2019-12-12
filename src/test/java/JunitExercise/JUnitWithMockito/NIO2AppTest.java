@@ -1,7 +1,10 @@
 package JunitExercise.JUnitWithMockito;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
+
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -40,13 +43,21 @@ public class NIO2AppTest {
 
 	@Test
 	public void testgetExpiredTablets() {
+		Map<String,LocalDate> expected=new HashMap<>();
+		expected.put("D-cold Total", LocalDate.of(2001, 02, 10));
+		expected.put("D-cold Total1", LocalDate.of(2000, 07, 10));
 		
-		assertEquals(Nio2Obj.getExpiredTablets("tablet_details.txt", "def"), Nio2Obj.getExpiredTablets("tablet_details.txt", "def"));
+		assertEquals(expected, Nio2Obj.getExpiredTablets("tablet_details.txt", "def"));
 	}
 	@Test
 	public void testsearchFile() {
-	
-		//when(Nio2Obj.searchFile("hidden.txt","src//file//data//")).than
+		//when(Nio2Obj.searchFile("hidden.txt","src//file//data//")).thenReturn(true);
+		//when(obj.searchFile("hidden.txt","src//file//data//")).thenReturn(true);
+	}
+	@Test
+	public void testsearchFile1() {
+		//when(Nio2Obj.searchFile("hidden.txt","src//file//data//")).thenReturn(true);
+		//when(obj.searchFile("hidden.txt","src//file//data//")).thenReturn(true);
 	}
 
 
